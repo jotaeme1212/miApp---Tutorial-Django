@@ -1,0 +1,36 @@
+{% extends "home/base.html" %}
+
+{% load tags_html %}
+
+{% block contenido %}
+
+<h2>{% image_tag 'tipos.png' %} Listado de Tipos de Usuarios </h2>
+
+<table class='webgrid'>
+	<tr class='webgrid-header'>
+		<th>ID</th>
+		<th>Nombre</th>
+		<th>Creado</th>
+		<th>Modificado</th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	{% for registro in lista %}
+	<tr class='webgrid-row-style'>
+		<td> {{ registro.id }} </td>
+		<td> {{ registro.nombre }} </td>
+		<td> {{ registro.created|filtro_fecha }} </td>
+		<td> {{ registro.updated|filtro_fecha }} </td>
+		<td> <a href='{% url tipo_usuarios_edit registro.id %}'> {% image_tag 'edit.gif' %} </a> </td>
+		<td> <a href='{% url tipo_usuarios_delete registro.id %}'> {% image_tag 'delete.gif' %} </a> </td>
+	</tr>
+	{% endfor %}
+</table>
+
+<br />
+
+<a href='{% url tipo_usuarios_edit 0 %}'> {% image_tag 'crear.gif' %} </a>
+<a href='{% url tipo_usuarios_excel %}'>{% image_tag 'save.gif' %}</a>
+
+{% endblock %}

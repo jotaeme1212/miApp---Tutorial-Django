@@ -1,0 +1,26 @@
+{% extends "home/base.html" %}
+
+{% load tags_html %}
+
+{% block contenido %}
+
+<h2> {% image_tag "llave.png" %} Ingreso al Sistema </h2>
+
+<form action='.' method='POST'>
+
+	{% include 'home/error_form.html' %}
+
+	{% csrf_token %}
+
+    <pre>
+    Usuario : {{ formulario.usuario }}
+    Clave   : {{ formulario.clave }}
+    </pre>
+
+    <input type='submit' value='Ingresar'>
+    {% url_button 'Cancelar' 'home_index' %}
+
+</form>
+<br/>
+
+{% endblock %}

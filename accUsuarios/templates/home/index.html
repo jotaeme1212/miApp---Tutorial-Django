@@ -1,0 +1,39 @@
+{% extends "home/base.html" %}
+
+{% load tags_html %}
+
+{% block contenido %}
+
+<h2>Opciones de Menu y Acceso a Usuarios</h2>
+
+<table>
+	<tr>
+		<td> {% url_img_tag 'tipos.png' 'tipo_usuarios_index' %} </td>
+		<td></td>
+		<td> {% url_img_tag 'usuario.png' 'usuarios_index' %} </td>
+		<td></td>
+		<td> {% url_img_tag 'menu.png' 'menu_index' %} </td>
+		<td></td>
+		<td> {% url_img_tag 'control.png' 'menu_tipo_usuarios_index' %} </td>
+	</tr>
+
+	<tr>
+		<th>Tipos de Usuarios</th>
+		<th></th>
+		<th>Usuarios del Sistema</th>
+		<th></th>
+		<th>Opciones de Menu</th>
+		<th></th>
+		<th>Control de Acceso</th>
+	</tr>
+</table>
+
+<pre align='center'>
+Cree sus propios menu, agrege usuarios al sistema y controle el acceso de los usuarios al menu.
+
+Los botones de la barra superior son para el mantenimiento de la aplicacion.
+
+Saludos!!
+</pre>
+
+{% endblock %}

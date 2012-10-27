@@ -1,0 +1,39 @@
+{% extends "home/base.html" %}
+
+{% load tags_html %}
+
+{% block contenido %}
+
+<h2>Usuario del Sistema</h2>
+
+{% if valido %}
+
+    <h4> {% image_tag "ok.gif" %} {{ msg_ok }} </h4>
+    <pre> Nombre: {{ nombre }} </pre>
+    {% url_button 'Listado' 'usuarios_index' %}
+
+{% else %}
+
+    {% include 'home/error_form.html' %}
+
+    <form action='.' method='POST'>
+
+        {% csrf_token %}
+
+        <pre>
+        Tipo Usuario : {{ formulario.tipousuario }}
+        Login        : {{ formulario.login }}
+        Nombre       : {{ formulario.nombre }}
+        Clave        : {{ formulario.clave }}
+        e-Mail       : {{ formulario.email }}
+        </pre>
+
+        <input type='submit' value='Enviar'>
+        {% url_button 'Cancelar' 'usuarios_index' %}
+
+    </form>
+    <br />
+
+{% endif %}
+
+{% endblock %}

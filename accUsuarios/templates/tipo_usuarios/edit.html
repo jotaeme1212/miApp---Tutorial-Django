@@ -1,0 +1,35 @@
+{% extends "home/base.html" %}
+
+{% load tags_html %}
+
+{% block contenido %}
+
+<h2>Tipo de Usuario</h2>
+
+{% if valido %}
+
+    <h4> {% image_tag "ok.gif" %} {{ msg_ok }} </h4>
+    <pre> Nombre: {{ nombre }} </pre>
+    {% url_button 'Listado' 'tipo_usuarios_index' %}
+
+{% else %}
+
+    {% include 'home/error_form.html' %}
+
+    <form action=',' method='POST'>
+
+        {% csrf_token %}
+
+        <pre>
+        Nombre : {{ formulario.nombre }}
+        </pre>
+
+        <input type='submit' value='Enviar'>
+        {% url_button 'Cancelar' 'tipo_usuarios_index' %}
+
+    </form>
+    <br />
+
+{% endif %}
+
+{% endblock %}

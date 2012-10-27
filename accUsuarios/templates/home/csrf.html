@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% load tags_html %}
+
+{% block contenido %}
+
+<h2>Operacion No Valida</h2>
+
+<h4> {% image_tag "error.gif" %} {{ reason }} </h4>
+
+{% endblock %}

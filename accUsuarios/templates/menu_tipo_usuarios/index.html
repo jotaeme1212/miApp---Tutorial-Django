@@ -1,0 +1,32 @@
+{% extends "home/base.html" %}
+
+{% load tags_html %}
+
+{% block contenido %}
+
+<h2>{% image_tag 'usuario.png' %} Listado de Accesos </h2>
+
+<table class='webgrid'>
+	<tr class='webgrid-header'>
+		<th>ID</th>
+		<th>Tipo Usuario</th>
+		<th>Opcion Menu</th>
+		<th></th>
+		<th></th>
+	</tr>
+
+	{% for registro in lista %}
+	<tr class='webgrid-row-style'>
+		<td> {{ registro.id }} </td>
+		<td> {{ registro.tipousuario }} </td>
+		<td> {{ registro.menu }} </td>
+		<td> <a href='{% url menu_tipo_usuarios_edit registro.id %}'> {% image_tag 'edit.gif' %} </a> </td>
+		<td> <a href='{% url menu_tipo_usuarios_delete registro.id %}'> {% image_tag 'delete.gif' %} </a> </td>
+	</tr>
+	{% endfor %}
+</table>
+
+<br />
+<a href='{% url menu_tipo_usuarios_edit 0 %}'> {% image_tag 'crear.gif' %} </a>
+
+{% endblock %}

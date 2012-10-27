@@ -1,0 +1,9 @@
+{% for registro in lista %}
+
+	{% if registro.url == '' %}
+		<div> <img src='{{ registro.icono }}' /> {{ registro.nombre }} </div>
+	{% else %}
+		<div> <img src='{{ registro.icono }}' /> <a href='{{ registro.url }}'> {{ registro.nombre }} </a> </div>
+	{% endif %}
+
+{% endfor %}

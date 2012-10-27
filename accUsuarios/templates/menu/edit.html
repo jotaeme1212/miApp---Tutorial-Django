@@ -1,0 +1,53 @@
+{% extends "home/base.html" %}
+
+{% load tags_html %}
+
+{% block contenido %}
+
+<div>
+<h2>Opcion de Menu</h2>
+</div>
+
+{% if valido %}
+
+    <h4> {% image_tag "ok.gif" %} {{ msg_ok }} </h4>
+    <pre> Nombre: {{ nombre }} </pre>
+    {% url_button 'Listado' 'menu_index' %}
+
+{% else %}
+
+    {% include 'home/error_form.html' %}
+
+    <form action='.' method='POST'>
+
+        {% csrf_token %}
+
+        <div class='span-10'>
+        <pre>
+        Nombre   : {{ formulario.nombre }}
+        URL      : {{ formulario.url }}
+        Accion   : {{ formulario.action }}
+        Icono    : {{ formulario.icono }}
+        Padre    : {{ formulario.padre }}
+        Orden    : {{ formulario.orden }}
+        </pre>
+        </div>
+
+        <div class='span-9 last'>
+        <h4> Accesos de la Opcion: </h4>
+        <p>
+        {{ formulario.tipousuarios }}
+        </p>
+        </div>
+
+        <div class='span-19 last'>
+        <input type='submit' value='Enviar'>
+        {% url_button 'Cancelar' 'menu_index' %}
+        </div>
+
+    </form>
+    <br />
+
+{% endif %}
+
+{% endblock %}

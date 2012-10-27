@@ -1,0 +1,11 @@
+{% load tags_html %}
+
+{% if ver_error %}
+
+	<h4> {% image_tag "error.gif" %} {{ msg_no }} </h4>
+
+	{% for registro in lista_err %}
+        <li style='color:red'> {{ registro }} </li>
+	{% endfor %}
+
+{% endif %}
